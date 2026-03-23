@@ -1,0 +1,13 @@
+Nei officialus build'as (https://firmware-selector.openwrt.org/?version=25.12.1&target=bcm27xx%2Fbcm2712&id=rpi-5)
+Nei sukompiliuotas sekant šias komandas visiškai nepasileido ant cm5 2G 64G eMMC su IO board per USB nepasileido:
+Ubuntu 24.04.4 LTS VM'e
+1. 'sudo apt update'
+2. 'sudo apt install build-essential libncurses5-dev libncursesw5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc rsync wget unzip'
+3. 'git clone https://git.openwrt.org/openwrt/openwrt.git'
+4. 'cd openwrt'
+5. './scripts/feeds update -a'
+6. './scripts/feeds install -a'
+7. 'make menuconfig' (pasirenkamai Target BCM27xx ir Subtarget BCM2712)
+8. 'make -j$(nproc)'
+9. 'cd /bin/targets' (officialus 11.8 MB, sukompiliuotas 11.5 MB)
+10. 'sudo gunzip -c openwrt-bcm27xx-bcm2712-rpi-5-squashfs-factory.img.gz | sudo dd of=/dev/sda'
